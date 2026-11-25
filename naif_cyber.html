@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#07110d">
+<title>NAIF CYBER | الأمن السيبراني</title>
+<style>
+:root{--bg:#050a08;--panel:#0b1510;--line:#173b29;--green:#35ff87;--muted:#9bb5a5;--white:#eafff1}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -15%,#123b25 0,transparent 48%),var(--bg);color:var(--white);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Tahoma,Arial,sans-serif;min-height:100vh}
+header{padding:24px 18px 16px;text-align:center;border-bottom:1px solid #143323;background:#07100cdd;position:sticky;top:0;backdrop-filter:blur(12px);z-index:2}
+.logo{font-size:30px;font-weight:900;letter-spacing:3px;color:var(--green);text-shadow:0 0 18px #35ff8766}.tag{color:var(--muted);font-size:12px;margin-top:5px}
+main{max-width:760px;margin:auto;padding:20px 15px 40px}.welcome{border:1px solid var(--line);background:linear-gradient(135deg,#10251a,#09120d);border-radius:18px;padding:19px;margin-bottom:18px}
+h1{font-size:21px;margin:0 0 8px}.welcome p{margin:0;color:var(--muted);font-size:13px;line-height:1.8}
+.status{display:inline-flex;align-items:center;gap:7px;color:var(--green);font-size:11px;margin-top:14px}.dot{width:7px;height:7px;background:var(--green);border-radius:50%;box-shadow:0 0 10px var(--green)}
+.section-title{font-size:15px;margin:22px 2px 12px;color:#c8f5d7}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+.card{border:1px solid var(--line);border-radius:15px;background:linear-gradient(145deg,#0e1b13,#09110d);padding:15px;text-align:right;color:var(--white);min-height:120px;cursor:pointer;transition:.15s}
+.card:active{transform:scale(.98);border-color:var(--green)}.icon{font-size:24px}.card h3{font-size:14px;margin:10px 0 5px}.card p{font-size:11px;color:var(--muted);margin:0;line-height:1.6}
+.panel{display:none;margin-top:16px;border:1px solid #28623e;border-radius:16px;padding:16px;background:#09140e}.panel.show{display:block}.panel h2{font-size:17px;margin:0 0 8px;color:var(--green)}.panel p{font-size:12px;color:var(--muted);line-height:1.7}
+label{display:block;font-size:12px;color:#c5e6d0;margin:13px 0 7px}input,textarea,select{width:100%;background:#050b07;border:1px solid #28513a;border-radius:10px;padding:12px;color:white;font-size:14px;outline:none}button.action{margin-top:12px;width:100%;padding:12px;border:0;border-radius:10px;background:var(--green);color:#031009;font-weight:800;font-size:14px;cursor:pointer}
+.result{margin-top:12px;padding:12px;border-radius:10px;background:#10251a;border:1px solid #1c5734;color:#caffd9;font-size:12px;line-height:1.8;display:none;white-space:pre-wrap}
+footer{text-align:center;color:#658572;font-size:10px;padding:24px 12px 10px;line-height:1.8}
+@media(min-width:600px){.grid{grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body>
+<header><div class="logo">NAIF CYBER</div><div class="tag">مركز الأمن السيبراني والتحليل الرقمي</div></header>
+<main>
+<section class="welcome"><h1>مرحباً بك في مركز القيادة</h1><p>أدوات تعليمية وتحليلية لمساعدتك على فهم الأمن الرقمي وحماية أجهزتك ومواقعك. اختر أداة للبدء.</p><div class="status"><span class="dot"></span> النظام جاهز · وضع تجريبي آمن</div></section>
+<div class="section-title">الأدوات الرئيسية</div>
+<section class="grid">
+<button class="card" onclick="openTool('site')"><div class="icon">🔍</div><h3>تحليل أمان موقع</h3><p>تحقق مبدئي من إعدادات الاتصال ورؤوس الحماية.</p></button>
+<button class="card" onclick="openTool('url')"><div class="icon">🕵️</div><h3>فحص رابط مشبوه</h3><p>تحليل مؤشرات الرابط محلياً دون فتحه.</p></button>
+<button class="card" onclick="openTool('pass')"><div class="icon">🔐</div><h3>قوة كلمة المرور</h3><p>تقييم محلي لا يرسل كلمة المرور إلى أي خادم.</p></button>
+<button class="card" onclick="openTool('file')"><div class="icon">📁</div><h3>معلومات ملف</h3><p>عرض اسم الملف ونوعه وحجمه محلياً.</p></button>
+<button class="card" onclick="openTool('network')"><div class="icon">🌐</div><h3>دليل الشبكات</h3><p>خطوات عملية لتأمين شبكة الواي فاي.</p></button>
+<button class="card" onclick="openTool('learn')"><div class="icon">🎓</div><h3>أكاديمية الأمن</h3><p>مسار تعلم أساسيات الاختبار الأخلاقي.</p></button>
+</section>
+<section id="panel" class="panel">
+<h2 id="toolTitle"></h2><p id="toolDesc"></p><div id="toolBody"></div><div id="result" class="result"></div>
+</section>
+<footer>NAIF CYBER · نسخة أولية تعمل داخل متصفحك<br>الفحوصات هنا تعليمية ومبدئية وليست بديلاً عن تدقيق أمني متخصص.</footer>
+</main>
+<script>
+const panel=document.getElementById('panel'), title=document.getElementById('toolTitle'),desc=document.getElementById('toolDesc'),body=document.getElementById('toolBody'),result=document.getElementById('result');
+function openTool(type){panel.classList.add('show');result.style.display='none';result.textContent='';let data={
+site:['تحليل أمان موقع','أدخل عنوان موقع تملكه أو لديك إذن بفحصه. هذه النسخة لا تنفذ فحصاً شبكياً؛ تعرض فحصاً أولياً لصيغة الرابط.','<label>عنوان الموقع</label><input id="siteInput" placeholder="https://example.com"><button class="action" onclick="checkSite()">تحليل مبدئي</button>'],
+url:['فحص رابط مشبوه','لا تضغط على الروابط غير الموثوقة. ألصق الرابط هنا لتحليل بعض علاماته محلياً.','<label>الرابط</label><input id="urlInput" placeholder="https://..."><button class="action" onclick="checkUrl()">افحص الرابط</button>'],
+pass:['قوة كلمة المرور','اكتب كلمة تجريبية فقط. لا تستخدم كلمة مرورك الحقيقية؛ التقييم يتم داخل الصفحة ولا يتم حفظها.','<label>كلمة مرور تجريبية</label><input id="passInput" type="password" placeholder="اكتب كلمة تجريبية"><button class="action" onclick="checkPass()">قيّم القوة</button>'],
+file:['معلومات ملف','اختر ملفاً لعرض بياناته الأساسية محلياً. لا يتم رفع الملف.','<label>اختر ملفاً</label><input id="fileInput" type="file"><button class="action" onclick="checkFile()">اعرض المعلومات</button>'],
+network:['تأمين شبكة الواي فاي','قائمة تحقق سريعة لحماية شبكتك المنزلية.','<p>✓ استخدم WPA2-AES أو WPA3.<br>✓ غيّر كلمة مرور لوحة تحكم الراوتر الافتراضية.<br>✓ حدّث نظام الراوتر بانتظام.<br>✓ عطّل WPS إذا لم تكن بحاجة إليه.<br>✓ أنشئ شبكة ضيوف للأجهزة غير المعروفة.<br>✓ راجع الأجهزة المتصلة من تطبيق أو لوحة الراوتر.</p>'],
+learn:['أكاديمية الأمن السيبراني','ابدأ بهذا المسار التعليمي الآمن:','<p><b>1.</b> أساسيات الشبكات وDNS وHTTP.<br><b>2.</b> Linux وسطر الأوامر.<br><b>3.</b> مبادئ الويب وJavaScript.<br><b>4.</b> مفاهيم الثغرات وطرق الوقاية منها.<br><b>5.</b> تدرب داخل مختبرات قانونية مخصصة مثل OWASP Juice Shop أو PortSwigger Web Security Academy.</p>']
+};title.textContent=data[type][0];desc.textContent=data[type][1];body.innerHTML=data[type][2];panel.scrollIntoView({behavior:'smooth',block:'start'});}
+function show(t){result.textContent=t;result.style.display='block'}
+function checkSite(){let v=document.getElementById('siteInput').value.trim();try{let u=new URL(v);show('الرابط بصيغته صحيحة.\\nالبروتوكول: '+u.protocol+'\\nالنطاق: '+u.hostname+'\\nتنبيه: هذا ليس فحص ثغرات أو شهادة أمان.');}catch(e){show('تعذر قراءة العنوان. تأكد من كتابة https:// متبوعاً باسم النطاق.');}}
+function checkUrl(){let v=document.getElementById('urlInput').value.trim();try{let u=new URL(v);let flags=[];if(u.protocol!=='https:')flags.push('الرابط لا يستخدم HTTPS');if(u.username||u.password)flags.push('يحتوي على بيانات دخول داخل العنوان');if(u.hostname.startsWith('xn--')||u.hostname.includes('xn--'))flags.push('قد يحتوي النطاق على أحرف دولية مشفّرة');if(u.hostname.split('.').length>4)flags.push('عدد النطاقات الفرعية مرتفع');show('النطاق: '+u.hostname+'\\n'+(flags.length?'مؤشرات تستحق الانتباه:\\n• '+flags.join('\\n• '):'لم تظهر مؤشرات بسيطة ضمن هذا الفحص.')+'\\n\\nهذا التحليل لا يثبت أن الرابط آمن أو ضار.');}catch(e){show('صيغة الرابط غير صحيحة.');}}
+function checkPass(){let p=document.getElementById('passInput').value;if(!p){show('أدخل كلمة تجريبية أولاً.');return}let score=0;if(p.length>=12)score++;if(/[a-z]/.test(p)&&/[A-Z]/.test(p))score++;if(/[0-9]/.test(p))score++;if(/[^A-Za-z0-9]/.test(p))score++;let common=['123456','password','qwerty','111111','abc123'];let msg=common.some(x=>p.toLowerCase().includes(x))?'تجنب الأنماط الشائعة.':score<=1?'ضعيفة — استخدم عبارة طويلة وفريدة.':score<=2?'متوسطة — زد الطول والتنوع.':score===3?'جيدة — اجعلها فريدة لكل حساب.':'قوية وفق المؤشرات الأساسية.';show('النتيجة: '+msg+'\\nالطول: '+p.length+' حرفاً.\\nهذا تقدير مبسط وليس اختباراً لقواعد بيانات كلمات المرور المسربة.');document.getElementById('passInput').value='';}
+function checkFile(){let f=document.getElementById('fileInput').files[0];if(!f){show('اختر ملفاً أولاً.');return}show('الاسم: '+f.name+'\\nالنوع: '+(f.type||'غير معروف')+'\\nالحجم: '+(f.size/1024).toFixed(2)+' KB\\nآخر تعديل: '+new Date(f.lastModified).toLocaleString('ar')); }
+</script>
+</body></html>
